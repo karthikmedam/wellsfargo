@@ -1,4 +1,4 @@
-<project>
+ <project>
 	<modelVersion>4.0.0</modelVersion>
 	
 	<groupId>com.gamutgurus</groupId>
@@ -21,6 +21,28 @@
 		</dependency>
 			
 	</dependencies>
+       <distributionManagement>
+        <repository>
+         <id>release</id>
+          <name>releases</name>
+          <url>http://localhost:8081/artifactory/libs-release-local</url>
+        </repository>
+         <snapshotRepository>
+         <id>snapshot</id>
+          <name>snapshots</name>
+          <url>http://localhost:8081/artifactory/libs-snapshot-local</url>
+          </snapshotRepository>
+          </distributionManagement>
+
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.5.1</version>
+           <configuration>
+            <tagNameFormat>v@{project.version}</tagNameFormat>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+           </configuration>
+       </plugin>
 
 	<build>
 		<finalName>gamutkart</finalName>
